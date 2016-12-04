@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-controller="obj">
+		 <!--<ul ng-repeat="x in name">
+		 	<li ng-repeat="y in x">{{y}}</li>
+		 </ul>-->
+		 <ul>
+		 	<li ng-repeat=" x in name">
+		 		{{x.kkc+","+x.kff}}
+		 	</li>
+		 </ul>
+	</body>
+	<script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//ng-repeat  循环遍历
+//		 var arr = [["刘胜伟","刘二笔","刘逗逼","刘坑比"],["刘胜","刘二","刘逗逼","刘坑"],["刘胜伟","刘二笔","刘逗逼","刘坑比"]]
+		 var arr = [{
+		 	kkc:'asfasdfds',
+		 	kff:"aasfsaf"
+		 },{
+		 	kkc:'asfasdfds',
+		 	kff:"aasfsaffdxgasdf"
+		 },{
+		 	kkc:'555',
+		 	kff:"444"
+		 }]
+		var app = angular.module("test",[]);
+		 app.controller("obj",function($scope){
+		 	$scope.name  = arr
+		 })
+	</script>
+</html>

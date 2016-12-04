@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>自定义过滤器</title>
+	</head>
+	<body ng-controller="tt">
+		<ul ng-repeat="a in data | unique:'type'">
+			<li>{{a}}</li>
+		</ul>
+	</body>
+	<script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+      	var app = angular.module("test",["filters"]); // 依赖注入
+      	app.controller("tt",function($scope){
+      		$scope.data = [
+      		{id:1,type:"篮球",name:"乔丹篮球"},
+      		{id:2,type:"篮球",name:"斯伯丁篮球"},
+      		{id:3,type:"篮球",name:"str篮球"},
+      		{id:4,type:"足球",name:"耐克足球"},
+      		{id:5,type:"足球",name:"阿迪足球"},
+      		{id:6,type:"乒乓球",name:"红双喜乒乓球"},
+      		{id:7,type:"乒乓球",name:"马琳乒乓球"},
+      		]
+      	});
+      	//过滤器 放在一个新的模块里
+      	var my = angular.module("filters",[]);
+      	//自定义过滤器   filter("过滤器名称"，函数)
+        my.filter("unique",function(){
+        	  //两个参数： 要过滤的过程  根据什么进行过率
+        	  return function(data,property){
+        	  	//判断过滤的数据是否是一个数组   isArray()   angular提供的一个全局的一个函数
+        	    if (angular.isArray(data)) {
+        	       var typename = [];  //定义空数组 用来存放返回结果；
+//      	       var obj = {};
+        	       for(var i =0;i<data.length;i++){
+        	       	var  type = data[i][property];
+        	       	if(typename.indexOf(type)==-1){ //如果数组里没有该内容
+        	       		//就将type值push进去
+        	       		typename.push(type);
+//      	       		obj[type] = true;
+        	       	}
+        	       }
+//             console.log(typename)
+        	       return typename;
+        	    }else{
+        	    	 return [];
+        	    }
+        	   }
+        })
+	</script>
+</html>

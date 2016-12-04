@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>指令</title>
+	</head>
+	<body>
+		<hello-word>
+			<p>hello word</p>
+		</hello-word>
+		<div hello-word>
+		</div>
+		<div class="hello-word"></div>
+		<!--  directive:hello-word  -->
+	</body>
+	<script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//1.指定应用程序的所有者，与ng-app="test"相关联
+		var app = angular.module("test",[]);
+		//2.自定义指令
+//		directive("自定义指令名称",回调函数)
+		app.directive("helloWord",function(){
+			//返回一个对象，用来配置一个相关信息
+			return {
+				restrict:"EACM", //restrict 默认值为 EA, 即可以通过元素名和属性名来调用指令。
+				replace : true, //注释
+				transclude:true, //添加标签内容
+//				template:"<ul><li>刘胜伟</li><ng-transclude></ng-transclude><li>刘逗逼</li><li>刘傻逼</li><li>刘二笔</li><li>刘坑比</li></ul>",''
+				templateUrl:"temolate.html"		 
+			}
+		})
+		//3.调用指令的四种方式
+		  //EACM:E--->element(元素名) A-->attribute(元素名) C-->class(类名)  M-->comment(注释)
+	</script>
+</html>
+<!--
+	指令（directive）
+	作用：在angularJs里面通过指令来扩展HTML
+	分类：系统内置指令  自定义指令 
+	命名规则：用驼峰命名法  ngApp
+	使用规则：使用指令的时候需要用 - 分开
+	系统常见的内置指令：
+	   1:ngApp(ng-app):一个项目中只能出现一次，他的作用是规定应用程序的所有者，如果把ng-app写在HTML里面去
+	   则说明应用程序的所有者是HTML，HTML之外的地方不能再使用angular里面的相关内容
+	   
+	   2.ngModel(ng-model):这是给标签的绑定一个变量，仅限于input标签，相当于拿一个变量实时保存input的value
+	   值一旦value值发生改变，那么ng-model相对应的值也发生改变
+	自定义指令：
+	   当系统内置指令不能满足你的需要的时候，需要我们来自定义指令，此时ng-app里面不能为空
+	//全局对象angular
+		//全局函数module(),有两个作用：
+		 //1.创建一个新的模块：两个参数，第一个参数是应用程序的名称，第二个参数是一个空数组，用来存放依赖的模块
+		 //2.获取一个已有模块，只有一个参数，代表的是模块名称
+-->

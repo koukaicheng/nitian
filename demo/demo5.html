@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-controller = "ccc">
+		<div>{{price | currency:"$"}}</div>
+		<div>{{name | uppercase}}</div>
+		
+		<ul ng-repeat="a in data | orderBy:'age'">
+			<li>{{a.age}}</li>
+		</ul>
+		<input type="text" ng-model="ee">
+		<div ng-repeat=" f in data | filter:ee">
+			<div>{{f.name}}</div>
+		</div>
+	</body>
+	<script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var app = angular.module("test",[]);
+		app.controller("ccc",function($scope){
+			$scope.price = 99999;
+			$scope.name = "Mary";
+			$scope.data = [
+			{id:1,name:"娇娇啊",age:18},
+			{id:2,name:"胜伟啊",age:15},
+			{id:3,name:"傻逼啊",age:12},
+			{id:3,name:"二笔啊",age:11},
+			{id:4,name:"逗逼啊",age:19},
+			]
+		})
+	</script>
+</html>
+<!--
+	    //系统的内置过滤器
+		//angularJS过滤器课用于转换数据
+		//currency  格式化数字为货币格式
+		//filter    从数组项中选择一个子集
+		//lowercase 格式化字符串为小写
+		//orderBy   根据某个表达式排列数组
+		//uppercase 格式化字符串为大写
+	
+-->

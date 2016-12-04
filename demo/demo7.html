@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="test">
+	<head>
+		<meta charset="UTF-8">
+		<title>路由</title>
+	</head>
+	<body>
+	    <div>我们的头部</div>
+	    <ng-view></ng-view>
+	</body>
+	<script src="angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="angualr.route.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var app = angular.module("test",["ngRoute"]);
+		//依赖注入路由模块   ng-route
+		
+		//配置路由    config  参数是一个函数  函数的参数是路由服务   $routeProvider
+		app.config(function($routeProvider){
+		  //when
+		  $routeProvider.when("/aa",{templateUrl:"template1.html"});
+		  $routeProvider.when("/bb",{templateUrl:"template2.html"});
+		  $routeProvider.otherwise({templateUrl:"template3.html"})
+		});
+	</script>
+</html>
