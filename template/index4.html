@@ -1,0 +1,82 @@
+<h2>您的购物车</h2>
+<div class="alert alert-warning lg shopping" id="kkk" ng-show="car.length==0">这里没有商品<a href="#/llll">点击这里返回购物</a></div>
+<table class="table table-striped" id="lll" ng-hide="car.length==0">
+	<thead>
+		<tr>
+			<th class="col-md-4">商品名称</th>
+			<th class="col-md-1">单价</th>
+			<th class="col-md-2">数量</th>
+			<th class="col-md-2">小计</th>
+			<th class="col-md-1">删除</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat=" a in car">
+			<td>{{a.product.name}}</td>
+			<td>{{a.product.price |currency}}</td>
+			
+			<td><button ng-click="jian(a)">-</button>{{a.count}}<button ng-click="jia(a)">+</button></td>
+			
+			<td>{{a.count*a.product.price |currency}}</td>
+			<td><button class="btn btn-danger" ng-click="click(a)">删除</button></td>
+		</tr>
+	</tbody>
+</table>
+<div class="alert alert-warning lg clearfix"ng-hide="car.length==0">
+	共有{{countmycar()}}件,{{mytotalprice | currency}}元
+	<button class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">结算</button>
+</div>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<!--<div class="modal-dialog">-->
+		<div class="modal-content modal-dialog">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					订单
+				</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-striped" id="lll" ng-hide="car.length==0">
+	<thead>
+		<tr>
+			<th>商品图片</th>
+			<th class="col-md-4">商品名称</th>
+			<th class="col-md-1">单价</th>
+			<th class="col-md-2">数量</th>
+			<th class="col-md-2">小计</th>
+			<th class="col-md-1">删除</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat=" a in car">
+			<td><img ng-src='img/{{a.product.img}}' style="width:100px;height:100px;"></img></td>
+			<td>{{a.product.name}}</td>
+			<td>{{a.product.price |currency}}</td>
+			
+			<td><button ng-click="jian(a)">-</button>{{a.count}}<button ng-click="jia(a)">+</button></td>
+			
+			<td>{{a.count*a.product.price |currency}}</td>
+			<td><button class="btn btn-danger" ng-click="click(a)">删除</button></td>
+		</tr>
+	</tbody>
+</table>
+				
+				
+			</div>
+			
+			<div class="modal-footer">
+				共有{{countmycar()}}件,{{mytotalprice | currency}}元
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				</button>
+				<button type="button" class="btn btn-primary">
+					确定付款
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	<!--</div><!-- /.modal -->
+</div>

@@ -1,0 +1,15 @@
+<h2>收藏夹</h2>
+<div class="alert alert-warning lg shopping" ng-show="Mycar.length==0">您的收藏夹没有商品<a href="#/llll">点击这里返回购物</a></div>
+<div class="well clearfix col-md-6" ng-repeat="eee in Mycar">
+				<img ng-src="img/{{eee.img}}"style="width: 220px;height: 220px;" class="pull-left col-md-3 ">
+				<div class=" pull-right col-md-8">
+				<h3>{{eee.name}}<span class="label label-primary pull-right">{{eee.price | currency}}</span></h3>
+				 
+					<p class="lead">{{eee.description}}</p>
+					<button class="btn btn-success pull-right" ng-click="addtocar(eee)">加入购物车</button>
+					<button class="btn btn-group" ng-click="myclick(eee)">取消收藏</button>
+				  
+			     </div>
+				
+			
+			</div>

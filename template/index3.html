@@ -1,0 +1,35 @@
+	<!--内容部分-->
+<div class="row panel panel-default">
+	<!--.panel 组件所做的只是设置基本的边框（border）和内补（padding）来包含内容。--->
+	<!--左边商品分类部分-->
+	<div class="col-md-3">
+		<button class="btn btn-default btn-block btn-lg " ng-click="getproducts ('全部')" ng-class="addClass('全部')" >全部</button>
+		<button class="btn btn-default btn-block btn-lg" ng-repeat=" a in data |up:'category'" ng-click="getproducts(a)" ng-class="addClass(a)" style="outline: none;">{{a}}</button>
+	</div>
+	<!--右边商品展示部分-->
+	<div class="col-md-9">
+		<!--商品部分-->
+		<div>
+			<!--第一个商品-->
+			<div class="well clearfix" ng-repeat="eee in myarr">
+				<img ng-src="img/{{eee.img}}"style="width: 220px;height: 200px;" class="pull-left col-md-3 col-xs-12">
+				<div class="col-md-9 pull-left">
+				<h3 class="col-md-12" ng-click="lostion(eee);xiangqing(eee)">{{eee.name}}<span class="label label-primary pull-right">{{eee.price | currency}}</span></h3>
+				  <div class="col-md-12">
+					<p class="lead" ng-click="lostion(eee)">{{eee.description}}</p>
+					<button class="btn btn-success pull-right" ng-click="addtocar(eee)">加入购物车</button>
+					<button class="btn" ng-click="addtomycar(eee)">收藏该物品</button>
+				  </div>
+			     </div>
+				
+				
+			</div>
+		</div>
+		<!--分页部分-->
+		<div class="pull-right btn-group">
+			<button class="btn btn-default perv " ng-click="perv()">上一页</button>
+			<button class="btn btn-default " ng-repeat="page in mypages" ng-click="getPerpage(page)" ng-class="fenyeclass(page)">{{page}}</button>
+			<button class="btn btn-default next" ng-click="next()">下一页</button>
+		</div>
+	</div>
+</div>
